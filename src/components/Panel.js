@@ -10,7 +10,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ChromeReaderModeIcon from "@material-ui/icons/ChromeReaderMode";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
-import MailIcon from "@material-ui/icons/Mail";
+import LanguageIcon from "@material-ui/icons/Language";
 import PhoneIcon from "@material-ui/icons/Phone";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
@@ -326,7 +326,7 @@ function Panel() {
             </div>
             <div>
               <div className={classes.webBtn}>
-                <MailIcon style={{ fontSize: "1rem" }} />
+                <LanguageIcon style={{ fontSize: "1rem" }} />
                 <a className={classes.link} href={business_website}>
                   <div className={classes.webBtnText}> Visit website</div>
                 </a>{" "}
