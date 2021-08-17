@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, IconButton } from "@material-ui/core";
+import { Grid, IconButton, Tooltip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import bentoLogo from "../assets/bento.PNG";
@@ -15,6 +15,27 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
+import siteData from "../components/json/siteData";
+
+const {
+  name,
+  stars,
+  num_reviews,
+  business_type,
+  business_city,
+  license_type,
+  orders_accepted,
+  business_open,
+  //   business_close,
+  license_id,
+  license_type_info,
+  delivery_fee,
+  delivery_min,
+  delivery_eta,
+  business_phone,
+  business_website,
+} = siteData;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "5rem 2rem 0",
@@ -22,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
       margin: "2rem 0.2rem ",
     },
   },
-
+  link: {
+    color: "gray",
+    textDecoration: "none",
+  },
   flexDiv: {
     display: "flex",
   },
@@ -75,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   iconListInnerDiv: {
-    width: "14rem",
+    width: "15rem",
     marginBottom: "0.2rem",
 
     [theme.breakpoints.down("sm")]: {
@@ -84,13 +108,13 @@ const useStyles = makeStyles((theme) => ({
   },
 
   startIcon: { fontSize: "1.1rem", color: "gray" },
-
   endIcon: {
     marginLeft: "0.15rem",
     fontSize: "0.9rem",
     color: "gray",
     opacity: "0.8",
   },
+
   deliveryDiv: {
     background: "#f1f1f1",
     padding: "0.8rem",
@@ -206,24 +230,24 @@ function Panel() {
             </div>
             <div>
               <div className={classes.headerTextDiv}>
-                <div className={classes.headerText}> Bento - San Mateo </div>
+                <div className={classes.headerText}> {name} </div>
                 <div className={classes.ratingDiv}>
                   <div>
                     <Rating
                       name="half-rating"
-                      defaultValue={4.5}
+                      defaultValue={stars}
                       precision={0.5}
                       color="white"
                       readOnly="true"
                       size="small"
                     />
                   </div>
-                  <div className={classes.ratingText}> 4.7 (747) </div>
+                  <div className={classes.ratingText}>
+                    {" "}
+                    4.7 ({num_reviews}){" "}
+                  </div>
                 </div>
-                <div className={classes.locationText}>
-                  {" "}
-                  San Mateo, California
-                </div>
+                <div className={classes.locationText}> {business_city}</div>
               </div>
               <div className={classes.iconListDiv}>
                 <div
@@ -232,37 +256,52 @@ function Panel() {
                   <div items className={classes.iconListInnerDiv}>
                     <IconWithDetail
                       startIcon={<DriveEtaIcon className={classes.startIcon} />}
-                      label="Delivery Only"
+                      label={business_type}
                     />
-                    <IconWithDetail
-                      startIcon={
-                        <ChromeReaderModeIcon className={classes.startIcon} />
-                      }
-                      label="Medical & recreational"
-                      endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
-                    />
+                    <Tooltip title={license_type_info} placement="top-start">
+                      <div>
+                        <IconWithDetail
+                          startIcon={
+                            <ChromeReaderModeIcon
+                              className={classes.startIcon}
+                            />
+                          }
+                          label={license_type}
+                          endIcon={
+                            <ErrorOutlineIcon className={classes.endIcon} />
+                          }
+                        />
+                      </div>
+                    </Tooltip>
                   </div>
                   <div items className={classes.iconListInnerDiv}>
                     <IconWithDetail
                       startIcon={
                         <WatchLaterIcon className={classes.startIcon} />
                       }
-                      label="Opened 9:30am"
+                      label={" Opens: " + business_open + " am"}
                       endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
                       closed="Closed"
                     />
-                    <IconWithDetail
-                      startIcon={
-                        <CheckCircleIcon className={classes.startIcon} />
-                      }
-                      label="License infomation"
-                      endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
-                    />
+
+                    <Tooltip title={license_id} placement="top-start">
+                      <div>
+                        <IconWithDetail
+                          startIcon={
+                            <CheckCircleIcon className={classes.startIcon} />
+                          }
+                          label="License infomation"
+                          endIcon={
+                            <ErrorOutlineIcon className={classes.endIcon} />
+                          }
+                        />
+                      </div>
+                    </Tooltip>
                   </div>
                 </div>
                 <IconWithDetail
                   startIcon={<ShoppingCartIcon className={classes.startIcon} />}
-                  label="Order online (delivery)"
+                  label={"Order " + orders_accepted + " (delivery)"}
                 />
               </div>
             </div>
@@ -272,7 +311,9 @@ function Panel() {
             <div className={classes.deliveryDiv}>
               <div className={classes.deliveryHeader}>Delivery Details</div>
               <div className={classes.deliveryDesc}>
-                $0 Fee | $45.00 minimium | eta 30 - 120 minutes.
+                ${delivery_fee} Fee | ${delivery_min} minimium | eta{" "}
+                {delivery_eta}
+                minutes.
               </div>
             </div>
           </Grid>
@@ -282,12 +323,14 @@ function Panel() {
           <div className={classes.buttonforWeb}>
             <div className={classes.webBtn}>
               <PhoneIcon style={{ fontSize: "1rem" }} />
-              <div className={classes.webBtnText}> 415-826-3686 </div>
+              <div className={classes.webBtnText}> {business_phone} </div>
             </div>
             <div>
               <div className={classes.webBtn}>
                 <MailIcon style={{ fontSize: "1rem" }} />
-                <div className={classes.webBtnText}> Email the retailer </div>
+                <a className={classes.link} href={business_website}>
+                  <div className={classes.webBtnText}> Visit website</div>
+                </a>{" "}
               </div>
             </div>
           </div>
