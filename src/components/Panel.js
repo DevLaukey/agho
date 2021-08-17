@@ -26,7 +26,7 @@ const {
   license_type,
   orders_accepted,
   business_open,
-  //   business_close,
+  business_close,
   license_id,
   license_type_info,
   delivery_fee,
@@ -279,9 +279,8 @@ function Panel() {
                       startIcon={
                         <WatchLaterIcon className={classes.startIcon} />
                       }
-                      label={" Opens: " + business_open + " am"}
+                      label={business_open + " - " + business_close}
                       endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
-                      closed="Closed"
                     />
 
                     <Tooltip title={license_id} placement="top-start">
