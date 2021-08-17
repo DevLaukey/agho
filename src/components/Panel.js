@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   iconListInnerDiv: {
-    width: "18rem",
+    width: "14rem",
     marginBottom: "0.2rem",
 
     [theme.breakpoints.down("sm")]: {
