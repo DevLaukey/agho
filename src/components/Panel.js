@@ -66,19 +66,16 @@ const useStyles = makeStyles((theme) => ({
   iconListDiv: {
     marginLeft: "1rem",
     marginTop: "0.6rem",
-
     [theme.breakpoints.down("md")]: {
       position: "absolute",
-      top: "5.8rem",
+      top: "5.4rem",
       left: "0",
       margin: "0",
       width: "100%",
     },
   },
   iconListInnerDiv: {
-    width: "22rem",
-    display: "flex",
-    justifyContent: "space-between",
+    width: "18rem",
     marginBottom: "0.2rem",
 
     [theme.breakpoints.down("sm")]: {
@@ -229,33 +226,39 @@ function Panel() {
                 </div>
               </div>
               <div className={classes.iconListDiv}>
-                <div items className={classes.iconListInnerDiv}>
-                  <IconWithDetail
-                    startIcon={<DriveEtaIcon className={classes.startIcon} />}
-                    label="Delivery Only"
-                  />
-                  <IconWithDetail
-                    startIcon={<WatchLaterIcon className={classes.startIcon} />}
-                    label="Opened 9:30am"
-                    endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
-                    closed="Closed"
-                  />
-                </div>
-                <div items className={classes.iconListInnerDiv}>
-                  <IconWithDetail
-                    startIcon={
-                      <ChromeReaderModeIcon className={classes.startIcon} />
-                    }
-                    label="Medical & recreational"
-                    endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
-                  />
-                  <IconWithDetail
-                    startIcon={
-                      <CheckCircleIcon className={classes.startIcon} />
-                    }
-                    label="License infomation"
-                    endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
-                  />
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <div items className={classes.iconListInnerDiv}>
+                    <IconWithDetail
+                      startIcon={<DriveEtaIcon className={classes.startIcon} />}
+                      label="Delivery Only"
+                    />
+                    <IconWithDetail
+                      startIcon={
+                        <ChromeReaderModeIcon className={classes.startIcon} />
+                      }
+                      label="Medical & recreational"
+                      endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
+                    />
+                  </div>
+                  <div items className={classes.iconListInnerDiv}>
+                    <IconWithDetail
+                      startIcon={
+                        <WatchLaterIcon className={classes.startIcon} />
+                      }
+                      label="Opened 9:30am"
+                      endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
+                      closed="Closed"
+                    />
+                    <IconWithDetail
+                      startIcon={
+                        <CheckCircleIcon className={classes.startIcon} />
+                      }
+                      label="License infomation"
+                      endIcon={<ErrorOutlineIcon className={classes.endIcon} />}
+                    />
+                  </div>
                 </div>
                 <IconWithDetail
                   startIcon={<ShoppingCartIcon className={classes.startIcon} />}

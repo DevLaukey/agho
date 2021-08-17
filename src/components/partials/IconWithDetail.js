@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
   flexDiv: {
     display: "flex",
     alignItems: "center",
+    marginBottom: "0.2rem",
   },
   iconText: {
     marginLeft: "0.4rem",
@@ -13,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     opacity: "0.9",
 
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "0.3rem",
-      fontSize: "0.8rem",
+      marginLeft: "0.2rem",
+      fontSize: "0.75rem",
     },
   },
 }));
