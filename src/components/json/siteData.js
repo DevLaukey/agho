@@ -2,7 +2,7 @@ const siteData = {
   name: "Bento - San Mateo",
   stars: "4.7",
   num_reviews: "747",
-  business_type: "delivery",
+  business_type: "Delivery",
   business_city: "San Mateo, California",
   license_type: "Medical & recreational",
   license_type_info: "Lorem ipsum boasdfasdfjalsdjflaksjfklajsdf",
