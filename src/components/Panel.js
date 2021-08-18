@@ -338,7 +338,11 @@ function Panel() {
               <div className={classes.mobiBtn}>Call</div>
             </div>
             <div>
-              <div className={classes.mobiBtn}>Email</div>
+              <div className={classes.mobiBtn}>
+                <a className={classes.link} href={business_website}>
+                  Visit website
+                </a>
+              </div>
             </div>
           </div>
           <div
