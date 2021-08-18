@@ -1,5 +1,5 @@
 import { Container } from "@material-ui/core";
-import Panel from "../src/components/Panel";
+import Panel from "./components/Panel";
 import "./App.css";
 
 function App() {

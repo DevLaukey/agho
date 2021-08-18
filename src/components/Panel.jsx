@@ -15,7 +15,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
-import siteData from "../components/json/siteData";
+import siteData from "./json/siteData";
 
 const {
   name,
